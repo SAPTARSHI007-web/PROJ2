@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEATHER APPLICATION WEBSITE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #1e7233, #2a5298);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 25px;
+            border-radius: 30px;
+            background-color: rgba(20, 176, 72, 0.1);
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background 0.4s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab:hover {
+            background-color: #ed0d0dd6;
+            transform: scale(1.1);
+        }
+
+        .tab.current-tab {
+            background-color: white;
+            color: #1e3c72;
+        }
+
+        .weather-container {
+            text-align: center;
+            width: 95%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .grant-location-container, .loading-container, .user-info-container {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        button {
+            background: #ffffff;
+            color: #2a5298;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: #2a5298;
+            color: white;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .weather-info {
+            text-align: center;
+        }
+
+        img {
+            width: 100px;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        h1, h2 {
+            margin: 10px 0;
+        }
+
+        p {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab current-tab" data-userWeather>Your Weather</div>
+        <div class="tab" data-searchWeather>Search Weather</div>
+    </div>
+
+    <div class="weather-container">
+        <div class="grant-location-container active">
+            <h1>Welcome to WeatherSphere</h1>
+            <p>Click below to grant location access.</p>
+            <button data-grantAccess>Grant Access</button>
+        </div>
+
+        <div class="loading-container">
+            <h2>Loading...</h2>
+        </div>
+
+        <div class="weather-info user-info-container">
+            <h2 data-cityName></h2>
+            <img data-countryIcon alt="Country Flag">
+            <p data-weatherDesc></p>
+            <img data-weatherIcon alt="Weather Icon">
+            <h2 data-temp>&deg;C</h2>
+            <p>Wind: <span data-windspeed></span> km/h</p>
+            <p>Humidity: <span data-humidity></span>%</p>
+            <p>Cloudiness: <span data-cloudiness></span>%</p>
+        </div>
+
+        <form data-searchForm class="weather-info">
+            <input type="text" data-searchInput placeholder="Enter city name...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
